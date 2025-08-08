@@ -4,6 +4,24 @@
   border-radius: 12px;
   max-height: 570px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #dc2626 #f3f4f6;
+}
+
+/* Custom scrollbar for Webkit browsers */
+.filter-container::-webkit-scrollbar {
+  width: 8px;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+
+.filter-container::-webkit-scrollbar-thumb {
+  background: #dc2626;
+  border-radius: 8px;
+}
+
+.filter-container::-webkit-scrollbar-thumb:hover {
+  background: #b91c1c;
 }
 
 .filter-group {

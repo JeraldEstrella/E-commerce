@@ -3,9 +3,17 @@
   line-height: 1.5;
   font-weight: 400;
 
-  --primary-color: #1e40af; /* Strong Blue - Trustworthy & bold */
-  --accent-color: #f59e0b; /* Warm Amber - Attention grabbing for buttons */
-  --background-color: #f9fafb; /* Light Gray - Clean and neutral background */
+  --primary-color: #3b82f6;
+  --success-color: #1d4ed8;
+  --accent-color: #f59e0b;
+  --danger-color: #ef4444;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

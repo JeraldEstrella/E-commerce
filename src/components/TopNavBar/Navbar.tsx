@@ -1,81 +1,68 @@
+import { ShoppingCart, Search, Heart, User, Home, Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './navbar.css';
-import {
-  Search,
-  ShoppingCart,
-  Bell,
-  Heart,
-  User,
-  ChevronDown,
-  Home,
-} from 'lucide-react';
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <>
-      {' '}
-      <div className='primary-navigation'>
-        <div className='nav-left'>
-          <div className='logo'>
-            <ShoppingCart />
-          </div>
-        </div>
+    <div className='navbar-container'>
+      {/* Top Section: Logo */}
+      <div className='navbar-left'>
+        <Link to='/' className='navbar-logo'>
+          <ShoppingCart size={20} />
+          <span>ShopHub</span>
+        </Link>
+        <button
+          type='button'
+          className='menu-button'
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label='Open menu'
+          title='Open menu'
+        >
+          {isOpen ? <Menu size={20} /> : <X size={20} />}
+        </button>
+      </div>
 
-        <div className='nav-center'>
-          <div className='search-container'>
-            <input
-              type='text'
-              placeholder='Search products, brands, categories...'
-            />
-            <button type='button' className='search-btn' title='Search'>
-              <Search aria-label='Search' />
-            </button>
-          </div>
-        </div>
-
-        <div className='nav-right'>
-          <button className='nav-btn' title='Notifications'>
-            <Bell size={20} />
-            <span className='badge'>3</span>
-          </button>
-
-          <button className='nav-btn' title='Wishlist'>
-            <Heart size={20} />
-          </button>
-
-          <button className='nav-btn cart-btn' title='Shopping Cart'>
-            <ShoppingCart size={20} />
-            <span className='badge'>2</span>
-          </button>
-
-          <div className='user-menu'>
-            <button className='user-btn'>
-              <div className='user-avatar'>
-                <User size={18} />
-              </div>
-              <span className='user-name'>John Doe</span>
-              <ChevronDown size={16} className='dropdown-arrow' />
-            </button>
-          </div>
+      {/* Search Section */}
+      <div className={isOpen ? 'navbar-center' : 'navbar-center open'}>
+        <div className='search-box'>
+          <Search size={18} className='search-icon' />
+          <input
+            type='text'
+            placeholder='Search products...'
+            className='search-input'
+          />
         </div>
       </div>
-      <div className='mobile-navigation'>
-        <button className='mobile-nav-btn' title='Menu'>
-          <ShoppingCart size={20} />
-        </button>
-        <button className='mobile-nav-btn' title='Search'>
+
+      {/* Bottom Navigation */}
+      <div className={isOpen ? 'navbar-right' : 'navbar-right open'}>
+        <Link to='/' className='nav-item'>
           <Home size={20} />
-        </button>
-        <div className='logo'>
-          <ShoppingCart size={20} />
-        </div>
-        <button className='mobile-nav-btn' title='Wishlist'>
+          <span>Home</span>
+        </Link>
+
+        <Link to='/wishlist' className='nav-item'>
           <Heart size={20} />
-        </button>
-        <button className='mobile-nav-btn' title='User Profile'>
+          <span>Wishlist</span>
+        </Link>
+
+        <Link to='/my-cart' className='nav-item'>
+          <div className='cart-wrapper'>
+            <ShoppingCart size={20} />
+            <span className='cart-badge'>2</span>
+          </div>
+          <span>Cart</span>
+        </Link>
+
+        <Link to='/profile' className='nav-item'>
           <User size={20} />
-        </button>
+          <span>Profile</span>
+        </Link>
       </div>
-    </>
+    </div>
   );
 };
 

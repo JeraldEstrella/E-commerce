@@ -5,6 +5,7 @@ import App from './App.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Search from './route/Search/Search';
 import RootLayout from './Rootlayout/Rootlayout';
+import MyCart from './route/myCart/MyCart';
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <App /> },
       { path: 'search', element: <Search /> },
+      { path: 'my-cart', element: <MyCart /> },
     ],
   },
 ]);
