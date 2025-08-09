@@ -1,4 +1,4 @@
-import { ShoppingCart, Search, Heart, User, Home, Menu, X } from 'lucide-react';
+import { ShoppingCart, Search, User, Home, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 import { useState } from 'react';
@@ -8,7 +8,6 @@ const Navbar = () => {
 
   return (
     <div className='navbar-container'>
-      {/* Top Section: Logo */}
       <div className='navbar-left'>
         <Link to='/' className='navbar-logo'>
           <ShoppingCart size={20} />
@@ -25,7 +24,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Search Section */}
       <div className={isOpen ? 'navbar-center' : 'navbar-center open'}>
         <div className='search-box'>
           <Search size={18} className='search-icon' />
@@ -37,16 +35,10 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Bottom Navigation */}
       <div className={isOpen ? 'navbar-right' : 'navbar-right open'}>
         <Link to='/' className='nav-item'>
           <Home size={20} />
           <span>Home</span>
-        </Link>
-
-        <Link to='/wishlist' className='nav-item'>
-          <Heart size={20} />
-          <span>Wishlist</span>
         </Link>
 
         <Link to='/my-cart' className='nav-item'>
@@ -57,9 +49,9 @@ const Navbar = () => {
           <span>Cart</span>
         </Link>
 
-        <Link to='/profile' className='nav-item'>
+        <Link to='/account' className='nav-item'>
           <User size={20} />
-          <span>Profile</span>
+          <span>Account</span>
         </Link>
       </div>
     </div>

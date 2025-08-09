@@ -1,27 +1,27 @@
 /* Filter Container */
 .filter-container {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 12px;
   max-height: 570px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #dc2626 #f3f4f6;
+  scrollbar-color: var(--primary-color) var(--bg-secondary);
 }
 
 /* Custom scrollbar for Webkit browsers */
 .filter-container::-webkit-scrollbar {
   width: 8px;
-  background: #f3f4f6;
+  background: var(--bg-secondary);
   border-radius: 8px;
 }
 
 .filter-container::-webkit-scrollbar-thumb {
-  background: #dc2626;
+  background: var(--primary-color);
   border-radius: 8px;
 }
 
 .filter-container::-webkit-scrollbar-thumb:hover {
-  background: #b91c1c;
+  background: var(--success-color);
 }
 
 .filter-group {
@@ -30,8 +30,12 @@
 
 /* Filter Header */
 .filter-header {
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(
+    135deg,
+    var(--bg-secondary) 0%,
+    var(--bg-secondary) 100%
+  );
+  border-bottom: 1px solid var(--text-secondary);
   padding: 1rem;
 }
 
@@ -49,13 +53,13 @@
 }
 
 .filter-dropdown-toggle:hover {
-  color: #dc2626;
+  color: var(--primary-color);
 }
 
 .filter-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--text-primary);
   margin: 0;
   text-align: left;
 }
@@ -70,21 +74,21 @@
 .filter-link {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: rgba(220, 38, 38, 0.05);
-  color: #dc2626;
+  background: rgba(59, 130, 246, 0.05);
+  color: var(--primary-color);
   text-decoration: none;
   border-radius: 20px;
   font-size: 0.875rem;
   font-weight: 500;
-  border: 1px solid rgba(220, 38, 38, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   transition: all 0.3s ease;
 }
 
 .filter-link:hover {
-  background: #dc2626;
-  color: white;
+  background: var(--primary-color);
+  color: var(--bg-primary);
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+  box-shadow: var(--shadow-md);
 }
 
 /* Dropdown Content - FIXED */
@@ -104,7 +108,7 @@
 
 .filter-options {
   padding: 1.5rem;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .filter-option {
@@ -118,10 +122,10 @@
 .filter-option h5 {
   font-size: 1rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--text-primary);
   margin: 0 0 0.75rem 0;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid #f3f4f6;
+  border-bottom: 2px solid var(--bg-secondary);
 }
 
 /* Filter List */

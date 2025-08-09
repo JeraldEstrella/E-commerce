@@ -1,0 +1,167 @@
+/* To Ship / To Receive Component Styles */
+.shipping-content {
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.shipping-content h3 {
+  margin: 0 0 24px 0;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 12px;
+}
+
+.shipment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.shipment-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #3b82f6;
+  border-radius: 4px 0 0 4px;
+}
+
+.shipment-item:hover {
+  background: #f3f4f6;
+  border-color: #3b82f6;
+  transform: translateY(-1px);
+}
+
+.shipment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tracking-number {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 16px;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tracking-number::before {
+  content: '📦';
+  font-size: 18px;
+}
+
+.status {
+  color: #6b7280;
+  font-size: 14px;
+  padding: 4px 12px;
+  background: #e5e7eb;
+  border-radius: 12px;
+  display: inline-block;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Status color variations */
+.shipment-item:nth-child(2) .status {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.shipment-item:nth-child(3) .status {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.shipment-item:nth-child(4) .status {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.btn-track {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-track:hover {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Progress indicator */
+.shipment-item::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Empty state */
+.shipping-content:empty::after {
+  content: 'No shipments to track';
+  display: block;
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  padding: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .shipment-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .btn-track {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .shipment-item::after {
+    display: none;
+  }
+}

@@ -40,7 +40,7 @@
     max-width: 100%;
     margin-right: 0;
     margin-bottom: 1.5rem;
-    box-shadow: none;
+    box-shadow: var(--shadow-sm);
     border-radius: 0;
     padding: 0.5rem 0;
   }

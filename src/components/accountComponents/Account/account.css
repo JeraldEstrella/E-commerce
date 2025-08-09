@@ -1,0 +1,230 @@
+/* Account Personal Information Component Styles */
+.account-content {
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.account-content h3 {
+  margin: 0 0 24px 0;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.account-content h3::before {
+  content: '👤';
+  font-size: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #374151;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  background: #f9fafb;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-group input:hover {
+  border-color: #9ca3af;
+}
+
+.form-group input[readonly] {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* Input icons */
+.form-group:nth-child(2) input {
+  padding-left: 40px;
+}
+
+.form-group:nth-child(2)::before {
+  content: '👤';
+  position: absolute;
+  left: 12px;
+  top: 38px;
+  font-size: 16px;
+  z-index: 1;
+}
+
+.form-group:nth-child(3) input {
+  padding-left: 40px;
+}
+
+.form-group:nth-child(3)::before {
+  content: '📧';
+  position: absolute;
+  left: 12px;
+  top: 38px;
+  font-size: 16px;
+  z-index: 1;
+}
+
+.form-group:nth-child(4) input {
+  padding-left: 40px;
+}
+
+.form-group:nth-child(4)::before {
+  content: '📱';
+  position: absolute;
+  left: 12px;
+  top: 38px;
+  font-size: 16px;
+  z-index: 1;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Profile completion indicator */
+.account-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: conic-gradient(#10b981 0deg 252deg, #e5e7eb 252deg 360deg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.account-content {
+  position: relative;
+}
+
+/* Floating labels effect */
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+  transform: translateY(-20px) scale(0.8);
+  color: #3b82f6;
+}
+
+/* Form validation states */
+.form-group.valid input {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.form-group.invalid input {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.form-group.valid::after {
+  content: '✓';
+  position: absolute;
+  right: 12px;
+  top: 38px;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.form-group.invalid::after {
+  content: '✗';
+  position: absolute;
+  right: 12px;
+  top: 38px;
+  color: #ef4444;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-group input {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 12px 14px;
+  }
+
+  .form-group:nth-child(n + 2) input {
+    padding-left: 36px;
+  }
+
+  .btn-primary {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+}
