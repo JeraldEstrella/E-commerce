@@ -8,6 +8,7 @@ import RootLayout from './Rootlayout/Rootlayout';
 import MyCart from './route/myCart/MyCart';
 import Product from './route/productdetails/Product.tsx';
 import Account from './route/account/Account';
+import Addproducts from './components/myStoreComponents/addProducts/Addproducts.tsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: 'my-cart', element: <MyCart /> },
       { path: 'product-details/:id', element: <Product /> },
       { path: 'account', element: <Account /> },
+      { path: 'add', element: <Addproducts /> },
     ],
   },
 ]);

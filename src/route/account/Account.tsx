@@ -1,5 +1,16 @@
 import { useState } from 'react';
 import './account.css';
+import {
+  User,
+  CreditCard,
+  Package,
+  Star,
+  Store,
+  MapPin,
+  Wallet,
+  Shield,
+  HelpCircle,
+} from 'lucide-react';
 import AccountInfo from '../../components/accountComponents/Account/Account';
 import Topay from '../../components/accountComponents/Topay/Topay';
 import Toship from '../../components/accountComponents/Toship/Toship';
@@ -41,6 +52,7 @@ const Account = () => {
         return <AccountInfo />;
     }
   };
+
   return (
     <div className='settings-container'>
       <div className='settings-header'>
@@ -56,18 +68,24 @@ const Account = () => {
             <h2 className='username'>John Doe</h2>
           </div>
         </div>
+        <button className='my-store' onClick={() => handleTabClick('store')}>
+          <Store size={20} />
+          My Store
+        </button>
       </div>
 
       <div className='settings-content'>
         <div className='settings-sidebar'>
           <nav className='settings-nav'>
             <button
-              className='nav-item'
+              className={`nav-item ${activeTab === 'account' ? 'active' : ''}`}
               onClick={() => handleTabClick('account')}
             >
               <div className='nav-item-content'>
                 <div className='nav-item-main'>
-                  <span className='nav-icon'>👤</span>
+                  <span className='nav-icon'>
+                    <User size={20} />
+                  </span>
                   <span className='nav-title'>My Account</span>
                 </div>
                 <p className='nav-description'>
@@ -78,12 +96,14 @@ const Account = () => {
             </button>
 
             <button
-              className='nav-item'
+              className={`nav-item ${activeTab === 'orders' ? 'active' : ''}`}
               onClick={() => handleTabClick('orders')}
             >
               <div className='nav-item-content'>
                 <div className='nav-item-main'>
-                  <span className='nav-icon'>💳</span>
+                  <span className='nav-icon'>
+                    <CreditCard size={20} />
+                  </span>
                   <span className='nav-title'>To Pay</span>
                   <span className='nav-badge'>3</span>
                 </div>
@@ -93,12 +113,14 @@ const Account = () => {
             </button>
 
             <button
-              className='nav-item'
+              className={`nav-item ${activeTab === 'shipping' ? 'active' : ''}`}
               onClick={() => handleTabClick('shipping')}
             >
               <div className='nav-item-content'>
                 <div className='nav-item-main'>
-                  <span className='nav-icon'>📦</span>
+                  <span className='nav-icon'>
+                    <Package size={20} />
+                  </span>
                   <span className='nav-title'>To Receive</span>
                 </div>
                 <p className='nav-description'>Track your shipments</p>
@@ -107,12 +129,14 @@ const Account = () => {
             </button>
 
             <button
-              className='nav-item'
+              className={`nav-item ${activeTab === 'reviews' ? 'active' : ''}`}
               onClick={() => handleTabClick('reviews')}
             >
               <div className='nav-item-content'>
                 <div className='nav-item-main'>
-                  <span className='nav-icon'>⭐</span>
+                  <span className='nav-icon'>
+                    <Star size={20} />
+                  </span>
                   <span className='nav-title'>To Review</span>
                   <span className='nav-badge'>5</span>
                 </div>
@@ -124,12 +148,14 @@ const Account = () => {
             </button>
 
             <button
-              className='nav-item'
+              className={`nav-item ${activeTab === 'store' ? 'active' : ''}`}
               onClick={() => handleTabClick('store')}
             >
               <div className='nav-item-content'>
                 <div className='nav-item-main'>
-                  <span className='nav-icon'>🏪</span>
+                  <span className='nav-icon'>
+                    <Store size={20} />
+                  </span>
                   <span className='nav-title'>Apply to Verified Store</span>
                 </div>
                 <p className='nav-description'>Become a verified seller</p>
@@ -138,12 +164,16 @@ const Account = () => {
             </button>
 
             <button
-              className='nav-item'
+              className={`nav-item ${
+                activeTab === 'addresses' ? 'active' : ''
+              }`}
               onClick={() => handleTabClick('addresses')}
             >
               <div className='nav-item-content'>
                 <div className='nav-item-main'>
-                  <span className='nav-icon'>📍</span>
+                  <span className='nav-icon'>
+                    <MapPin size={20} />
+                  </span>
                   <span className='nav-title'>My Addresses</span>
                 </div>
                 <p className='nav-description'>Manage shipping addresses</p>
@@ -152,12 +182,14 @@ const Account = () => {
             </button>
 
             <button
-              className='nav-item'
+              className={`nav-item ${activeTab === 'payment' ? 'active' : ''}`}
               onClick={() => handleTabClick('payment')}
             >
               <div className='nav-item-content'>
                 <div className='nav-item-main'>
-                  <span className='nav-icon'>💰</span>
+                  <span className='nav-icon'>
+                    <Wallet size={20} />
+                  </span>
                   <span className='nav-title'>Payment Methods</span>
                 </div>
                 <p className='nav-description'>
@@ -168,12 +200,14 @@ const Account = () => {
             </button>
 
             <button
-              className='nav-item'
+              className={`nav-item ${activeTab === 'privacy' ? 'active' : ''}`}
               onClick={() => handleTabClick('privacy')}
             >
               <div className='nav-item-content'>
                 <div className='nav-item-main'>
-                  <span className='nav-icon'>🔒</span>
+                  <span className='nav-icon'>
+                    <Shield size={20} />
+                  </span>
                   <span className='nav-title'>Privacy & Security</span>
                 </div>
                 <p className='nav-description'>Account security settings</p>
@@ -181,10 +215,15 @@ const Account = () => {
               <span className='nav-arrow'>›</span>
             </button>
 
-            <button className='nav-item' onClick={() => handleTabClick('help')}>
+            <button
+              className={`nav-item ${activeTab === 'help' ? 'active' : ''}`}
+              onClick={() => handleTabClick('help')}
+            >
               <div className='nav-item-content'>
                 <div className='nav-item-main'>
-                  <span className='nav-icon'>❓</span>
+                  <span className='nav-icon'>
+                    <HelpCircle size={20} />
+                  </span>
                   <span className='nav-title'>Help & Support</span>
                 </div>
                 <p className='nav-description'>Get help and contact us</p>

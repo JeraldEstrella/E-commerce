@@ -1,4 +1,4 @@
-import Navlinks from './components/NavigationLinks/Navlinks.tsx';
+import Navlinks from './components/category/Navlinks.tsx';
 import Main from './route/main/Main';
 import './index.css';
 
