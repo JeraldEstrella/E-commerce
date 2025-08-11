@@ -22,7 +22,7 @@ export const filterOptionsByCategory: Record<string, string[]> = {
   ],
   books: ['price', 'rating', 'author', 'publisher', 'language', 'format'],
   home: ['price', 'rating', 'brand', 'room', 'material', 'style'],
-  sports: ['price', 'rating', 'brand', 'sport_type', 'size', 'skill_level'],
+  sports: ['price', 'rating', 'brand', 'sport_type', 'size'],
 };
 
 // Filter definitions with their options (HARDCODED - Industry Standard)

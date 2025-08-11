@@ -1,5 +1,8 @@
 import { Zap, Calendar } from 'lucide-react';
-import { categoryOptions, useCategoryStore } from '../../lib/selectedCategory';
+import {
+  categoryOptions,
+  useCategoryStore,
+} from '../../lib/zustand/selectedCategory';
 import './navlinks.css';
 
 const Navlinks: React.FC = () => {
