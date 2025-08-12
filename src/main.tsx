@@ -8,7 +8,7 @@ import RootLayout from './Rootlayout/Rootlayout';
 import MyCart from './route/myCart/MyCart';
 import Product from './route/productdetails/Product.tsx';
 import Account from './route/account/Account';
-import Addproducts from './components/myStoreComponents/addProducts/Addproducts.tsx';
+import Addproducts from './storeRoute/Addproducts.tsx';
 
 const router = createBrowserRouter([
   {
