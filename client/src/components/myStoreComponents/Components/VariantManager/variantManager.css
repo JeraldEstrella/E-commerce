@@ -1,0 +1,223 @@
+/* Form Section */
+.form-section {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Variant Container */
+.variants-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.variant-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: #d1d5db 1px solid;
+}
+
+.variant-input input {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.add-variant-btn {
+  background: #3b82f6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.variant-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.variant-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+  border: 1px solid #d1d5db;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.variant-option {
+  background: #f3f4f6;
+  padding: 0.25rem 0.5rem;
+  border: #1f2937;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.variant-tag {
+  background: #3b82f6;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+.add-option-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.add-option-container input {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  max-width: 200px;
+  flex-grow: 1;
+}
+
+.delete-tag {
+  background: #ef4444;
+  color: white;
+  padding: 0.5rem 0.7rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Enhanced Mobile Responsive Design */
+@media (max-width: 768px) {
+  .form-section {
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+  }
+
+  .form-section h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .variants-section {
+    gap: 0.5rem;
+  }
+
+  .variant-input {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-bottom: none;
+    background: #f8fafc;
+    border-radius: 6px;
+  }
+
+  .variant-input input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .add-variant-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    justify-self: stretch;
+  }
+
+  .variant-label {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  .variant-tags {
+    gap: 0.75rem;
+  }
+
+  .add-option-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #f1f5f9;
+    border-radius: 6px;
+  }
+
+  .add-option-container input {
+    max-width: none;
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  .add-option-container button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .delete-tag {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Tablet specific adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .variant-input {
+    padding: 0.75rem;
+  }
+
+  .add-option-container input {
+    max-width: 250px;
+  }
+}
+
+/* Small mobile phones */
+@media (max-width: 480px) {
+  .form-section {
+    padding: 0.5rem;
+    border-radius: 6px;
+  }
+
+  .variant-input {
+    padding: 0.5rem;
+  }
+
+  .variant-input input,
+  .add-variant-btn,
+  .add-option-container input,
+  .delete-tag {
+    padding: 0.625rem;
+    font-size: 0.8rem;
+  }
+
+  .variant-label {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .variant-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}

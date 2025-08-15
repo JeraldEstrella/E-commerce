@@ -1,0 +1,206 @@
+/* To Pay Orders Component Styles */
+.orders-content {
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.orders-content h3 {
+  margin: 0 0 24px 0;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.orders-content h3::before {
+  font-size: 24px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.order-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #ef4444;
+  border-radius: 4px 0 0 4px;
+}
+
+.order-item:hover {
+  background: #f3f4f6;
+  border-color: #ef4444;
+  transform: translateY(-1px);
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-id {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 16px;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.order-id::before {
+  font-size: 18px;
+}
+
+.order-total {
+  color: #ef4444;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.order-total::before {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.btn-pay {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-pay::before {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-pay:hover::before {
+  left: 100%;
+}
+
+.btn-pay:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Urgent payment indicator */
+.order-item::after {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 16px;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Payment deadline warning */
+.order-item:nth-child(2)::after {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+/* Empty state */
+.orders-content:empty::after {
+  content: 'No pending payments';
+  display: block;
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  padding: 40px;
+}
+
+/* Order count badge */
+.orders-content h3::after {
+  content: ' (2)';
+  background: #ef4444;
+  color: white;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  font-weight: 600;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding-right: 50px; /* Make space for warning icon */
+  }
+
+  .btn-pay {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .order-total {
+    font-size: 16px;
+  }
+}
