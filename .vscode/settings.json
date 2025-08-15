@@ -1,0 +1,12 @@
+{
+  "autoimport.absolute": true,
+  "editor.formatOnSave": true,
+  "workbench.colorTheme": "Visual Studio 2019 Dark",
+  "editor.autoClosingComments": "always",
+  "editor.foldingImportsByDefault": true,
+  "dotnet.formatting.organizeImportsOnFormat": true,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "editor.inlineSuggest.edits.showCollapsed": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.eslintIntegration": true
+}
