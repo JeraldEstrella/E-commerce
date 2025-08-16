@@ -11,7 +11,7 @@
 
 .image-uploader h3 {
   margin: 0 0 0.75rem 0;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #1f2937;
 }
@@ -34,14 +34,23 @@
 
 .additional-container {
   display: flex;
+  border-top: 1px solid #6e6e6f65;
+  margin-top: 0.5rem;
   flex-direction: column;
   gap: 1rem;
+}
+
+.additional-container h5 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
 }
 
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 1rem;
+  align-self: center;
 }
 
 .additional-image {

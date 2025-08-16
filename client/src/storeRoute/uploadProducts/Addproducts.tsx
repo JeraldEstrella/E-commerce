@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type {
   fileState,
   ProductData,
@@ -17,6 +17,7 @@ const urlEndpoint = import.meta.env.VITE_IMAGEKIT_ENDPOINT;
 const publicKey = import.meta.env.VITE_IMAGE_PUBLIC_KEY;
 
 const Addproducts = () => {
+  const [upload, setUploading] = useState(true);
   const [productData, setProductData] = useState<ProductData>({
     productName: '',
     category: '',
@@ -41,79 +42,76 @@ const Addproducts = () => {
     additionalImages: [],
   });
 
-  const handleSubmit = async () => {
-    if (
-      Object.values(productData).some((value) => !value || value.length === 0)
-    ) {
-      console.log('Some fields are missing');
-      return;
-    }
+  const imagekit = new ImageKit({
+    publicKey: publicKey,
+    urlEndpoint: urlEndpoint,
+  });
 
-    const imagekit = new ImageKit({
-      publicKey: publicKey,
-      urlEndpoint: urlEndpoint,
-    });
+  const getAuthParams = async () => {
+    const response = await fetch('http://localhost:3000/api/get/imagekit-auth');
+    if (!response.ok)
+      throw new Error('Faileed to fetch ImageKit authentication');
+    return await response.json();
+  };
 
-    let signature, token, expire;
-    try {
-      const response = await fetch(
-        'http://localhost:3000/api/get/imagekit-auth'
-      );
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`Error: ${response.status} ${errorText}`);
+  const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    console.log('Submit clicked');
+    setUploading(true);
+
+    //function to upload the mainImage and additionalImages
+    //when the tempFile contains mainImage proceed to upload to imageKit
+    //after the imagekit upload takes the URL and store to the productData
+    if (tempFile.mainImage) {
+      const imageAuth = await getAuthParams();
+      const uploadMainImage = await imagekit.upload({
+        file: tempFile.mainImage,
+        fileName: tempFile.mainImage.name,
+        token: imageAuth.token,
+        expire: imageAuth.expire,
+        signature: imageAuth.signature,
+      });
+
+      const additionalImageResult: string[] = [];
+      //if no additionalImage in tempFile skip and store the mainImage
+      //if there is additionalImage loop through all files and fetch new Authentication each file for upload
+      if (tempFile.additionalImages) {
+        for (const file of tempFile.additionalImages) {
+          const newAuth = await getAuthParams();
+          const result = await imagekit.upload({
+            file: file,
+            fileName: file.name,
+            token: newAuth.token,
+            expire: newAuth.expire,
+            signature: newAuth.signature,
+          });
+          additionalImageResult.push(result.url);
+        }
       }
 
-      const data = await response.json();
-      signature = data.signature;
-      token = data.token;
-      expire = data.expire;
-    } catch (error) {
-      throw new Error(`Failed to fetch authentication parameters: ${error}`);
-    }
-
-    if (!tempFile.mainImage) {
+      //updates the productData array
+      setProductData((prevData) => ({
+        ...prevData,
+        images: {
+          mainImage: uploadMainImage
+            ? uploadMainImage?.url
+            : prevData.images.mainImage,
+          additionalImages: [
+            ...(prevData.images.additionalImages || []),
+            ...additionalImageResult,
+          ],
+        },
+      }));
+    } else {
       throw new Error('Main image missing');
     }
 
-    if (!tempFile.additionalImages || tempFile.additionalImages.length === 0) {
-      throw new Error('No additional images selected');
-    }
-
-    const upload = [
-      imagekit.upload({
-        file: tempFile.mainImage,
-        fileName: tempFile.mainImage.name,
-        token,
-        expire,
-        signature,
-      }),
-      ...tempFile.additionalImages.map((file) =>
-        imagekit.upload({
-          file: file,
-          fileName: file.name,
-          token,
-          expire,
-          signature,
-        })
-      ),
-    ];
-
-    const result = await Promise.all(upload);
-    const [mainImageResult, ...additionalImagesResult] = result;
-
-    setProductData((prevData) => ({
-      ...prevData,
-      images: {
-        mainImage: mainImageResult.url,
-        additionalImages: additionalImagesResult.map((img) => img.url),
-      },
-    }));
+    setUploading(false);
   };
 
   useEffect(() => {
-    console.log('productData changed:', tempFile);
-  }, [tempFile]);
+    console.log(productData);
+  }, [productData]);
 
   return (
     <div className='addproducts-container'>
@@ -161,7 +159,15 @@ const Addproducts = () => {
 
             <div className='preview-card'>
               <div className='preview-image'>
-                <span>📷 Product Image</span>
+                <img
+                  className='image-preview'
+                  src={
+                    tempFile.mainImage
+                      ? URL.createObjectURL(tempFile.mainImage)
+                      : ''
+                  }
+                  alt=''
+                />
               </div>
 
               <div className='preview-content'>
@@ -207,7 +213,16 @@ const Addproducts = () => {
       {/* Action Buttons */}
       <div className='addproducts-actions'>
         <button className='btn-cancel'>Cancel</button>
-        <button className='btn-publish' onClick={() => handleSubmit()}>
+        <button
+          className='btn-publish'
+          onClick={async (e) => {
+            try {
+              await handleSubmit(e);
+            } catch (err) {
+              console.error(err);
+            }
+          }}
+        >
           Publish Product
         </button>
       </div>
