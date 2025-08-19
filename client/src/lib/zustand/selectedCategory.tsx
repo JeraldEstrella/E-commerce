@@ -6,6 +6,7 @@ interface CategoryState {
   setCategory: (category: string) => void;
 }
 
+//store the current selected category to pass to other route
 export const useCategoryStore = create<CategoryState>((set) => ({
   category: 'all',
   setCategory: (category: string) => set({ category }),

@@ -3,11 +3,11 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.tsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Search from './route/searchedProducs/Search.tsx';
+import Search from './Route/FilterProducts/Search.tsx';
 import RootLayout from './Rootlayout/Rootlayout';
-import MyCart from './route/myCart/MyCart';
-import Product from './route/productdetails/Product.tsx';
-import Account from './route/account/Account';
+import MyCart from './Route/MyCart/MyCart.tsx';
+import Product from './Route/ProductDetails/Product.tsx';
+import Account from './Route/Account/Account.tsx';
 import Addproducts from './storeRoute/uploadProducts/Addproducts.tsx';
 
 const router = createBrowserRouter([

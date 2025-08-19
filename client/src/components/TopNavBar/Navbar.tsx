@@ -16,7 +16,7 @@ const Navbar = () => {
         <button
           type='button'
           className='menu-button'
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen((prev) => !prev)}
           aria-label='Open menu'
           title='Open menu'
         >

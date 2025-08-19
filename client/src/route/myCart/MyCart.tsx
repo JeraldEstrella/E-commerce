@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import './mycart.css';
 
 type CartItem = {
@@ -37,9 +37,9 @@ const initialCart: CartItem[] = [
   },
 ];
 
-const MyCart: React.FC = () => {
-  const [cartItems, setCartItems] = React.useState<CartItem[]>(initialCart);
-  const [promoCode, setPromoCode] = React.useState<string>('');
+const MyCart = () => {
+  const [cartItems, setCartItems] = useState<CartItem[]>(initialCart);
+  const [promoCode, setPromoCode] = useState<string>('');
 
   const updateQuantity = (id: number, delta: number) => {
     setCartItems((prev) =>
